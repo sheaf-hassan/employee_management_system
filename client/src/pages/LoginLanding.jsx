@@ -1,4 +1,4 @@
-import { ArrowRightIcon, Copyright, ShieldIcon, UserIcon } from "lucide-react"
+import { ArrowRightIcon, ShieldIcon, UserIcon } from "lucide-react"
 import LoginLeftSide from "../components/LoginLeftSide"
 import { Link } from "react-router-dom"
 
