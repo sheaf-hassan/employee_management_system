@@ -1,4 +1,4 @@
-import { ArrowRightIcon, ShieldIcon, UserIcon } from "lucide-react"
+import { ArrowRightIcon, Copyright, ShieldIcon, UserIcon } from "lucide-react"
 import LoginLeftSide from "../components/LoginLeftSide"
 import { Link } from "react-router-dom"
 
@@ -47,6 +47,9 @@ const LoginLanding = () => {
                 ))}
             </div>
             {/* Footer */}
+            <div className="mt-12 text-center md:text-left text-sm text-slate-400">
+              <p>ⓒ {new Date().getFullYear()} Sheaf's tech. All right reserved.</p>
+            </div>
         </div>
 
         </div>
