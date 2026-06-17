@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
-import { dummyEmployeeData } from "../assets/assets";
-import { Plus } from "lucide-react";
+import { dummyEmployeeData, DEPARTMENTS } from "../assets/assets";
+import { Plus, Search } from "lucide-react";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [selectedDept, setSelectedDept] = useState("");
 
   const fetchEmployees = useCallback(async () => {
     setLoading(true);
-    setEmployees(dummyEmployeeData);
+    setEmployees(dummyEmployeeData.filter((emp)=> (selectedDept ? emp.department === selectedDept : emp)));
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -17,6 +19,8 @@ const Employees = () => {
   useEffect(() => {
     fetchEmployees();
   }, []);
+
+  const filtered = employees.filter((emp)=> `${emp.firstName} ${emp.lastName} ${emp.position}`.toLowerCase().includes(search.toLowerCase()))
 
   return (
     <div className="animate-fade-in">
@@ -32,6 +36,21 @@ const Employees = () => {
       </div>
 
       {/* Search bar */}
+      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+        <div className="relative flex-1">
+          <Search className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4"/>
+          <input placeholder="Search employees..." className="w-full pl-10"
+          onChange={(e)=>setSearch(e.target.value)}
+          value={search}
+          />
+        </div>
+        <select value={selectedDept} onChange={(e)=>setSelectedDept(e.target.value)} className="max-w-40">
+            <option value="">All Departments</option>
+            {DEPARTMENTS.map((deptName)=>(
+              <option key={deptName} value={deptName}>{deptName}</option>
+            ))}
+        </select>
+      </div>
 
       {/* Employee card */}
     </div>
