@@ -30,7 +30,7 @@ const EmployeeCard = ({employee, onDelete, onEdit}) => {
                 <button onClick={()=> onEdit(employee)} className="p-2.5 bg-white/90 backdrop-blur-sm text-slate-700 hover:text-indigo-600 rounded-xl shadow-lg transition-all hover-scale-105">
                     <PencilIcon className="w-4 h-4"/>
                 </button>
-                <button onClick={handleDelete} className="p-2.5 bg-white-90 backdrop-blur-sm text-slate-700 hover:text-rose-600 rounded-xl shadow-lg transition-all hover:scale-105 disabled:opacity-50">
+                <button onClick={handleDelete} className="p-2.5 bg-white/90 backdrop-blur-sm text-slate-700 hover:text-rose-600 rounded-xl shadow-lg transition-all hover:scale-105 disabled:opacity-50">
                     <Trash2Icon className="w-4 h-4"/>
                 </button>
             </div>

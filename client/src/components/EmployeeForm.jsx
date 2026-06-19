@@ -197,7 +197,7 @@ const EmployeeForm = ({ initialData, onSuccess, onCancel }) => {
           </button>
           <button type="submit" disabled={loading} className="btn-primary flex items-center justify-center">
                 {loading && <Loader2Icon className="w-4 h-4 mr-2 animate-spin"/>}
-                {isEditMode ? "Update Employ" : "Create Employee"}
+                {isEditMode ? "Update Employee" : "Create Employee"}
           </button>
       </div>
     </form>
