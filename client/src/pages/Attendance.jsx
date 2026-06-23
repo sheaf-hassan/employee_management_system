@@ -3,6 +3,7 @@ import { dummyAttendanceData } from "../assets/assets";
 import Loading from "../components/Loading"
 import CheckInButton from "../components/attendance/CheckInButton";
 import AttendanceStats from "../components/attendance/AttendanceStats";
+import AttendanceHistory from "../components/attendance/AttendanceHistory";
 
 const Attendance = () => {
 
@@ -45,6 +46,7 @@ const Attendance = () => {
       )}
 
       <AttendanceStats history={history}/>
+      <AttendanceHistory history={history}/>
     </div>
   )
 }
