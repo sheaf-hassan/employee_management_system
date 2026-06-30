@@ -1,7 +1,7 @@
 import Employee from "../models/Employee.js";
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
-import Employee from "../models/Employee.js";
+
 
 // Get employees
 // GET /api/employees
