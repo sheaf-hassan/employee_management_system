@@ -112,7 +112,7 @@ const attendanceReminderCron = inngest.createFunction(
                 employmentStatus: "ACTIVE",
             }).lean();
 
-            return employee.map((e)=>({_id: e._id.toString(), firstName: e.firstName, lastName: e.lastName, email: e.email, department: e.department}))
+            return employees.map((e)=>({_id: e._id.toString(), firstName: e.firstName, lastName: e.lastName, email: e.email, department: e.department}))
         })
 
         // Step-3: Get employee IDS on approved leave today
