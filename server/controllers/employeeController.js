@@ -76,7 +76,7 @@ export const updateEmployee = async (req, res)=>{
     try {
         const {id} = req.params;
 
-        const {firstName, lastName, email, phone, position, department, basicSalary, allowances, deductions, password, role, bio, employmentStatus} = req.body;
+        const {firstName, lastName, email, phone, position, department, basicSalary, allowances, deductions, password, role, bio, employeeStatus} = req.body;
 
         const employee = await Employee.findById(id)
         if(!employee) return res.status(404).json({error: "Employee not found"})
@@ -91,7 +91,7 @@ export const updateEmployee = async (req, res)=>{
             basicSalary: Number(basicSalary) || 0,
             allowances: Number(allowances) || 0,
             deductions: Number(deductions) || 0,
-            employmentStatus: employmentStatus || "ACTIVE",
+            employeeStatus: employeeStatus || "ACTIVE",
             bio: bio || "",
         })
 

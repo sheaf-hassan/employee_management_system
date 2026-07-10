@@ -153,11 +153,11 @@ const EmployeeForm = ({ initialData, onSuccess, onCancel }) => {
             <div>
               <label className="block mb-2">Status</label>
               <select
-                name="employmentStatus"
-                defaultValue={initialData?.employmentStatus}
+                name="employeeStatus"
+                defaultValue={initialData?.employeeStatus}
               >
                 <option value="ACTIVE">Active</option>
-                <option value="InACTIVE">Inactive</option>
+                <option value="INACTIVE">Inactive</option>
               </select>
             </div>
           )}
