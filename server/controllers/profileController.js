@@ -31,7 +31,9 @@ export const getProfile = async (req, res) =>{
 // PUT /api/profile
 export const updateProfile = async (req, res) =>{
     try {
+        const { bio } = req.body;
         const session = req.session;
+        await User.findByIdAndUpdate(session.userId, { bio });
         const employee = await Employee.findOne({userId: session.userId});
 
         if (employee) {
@@ -41,7 +43,7 @@ export const updateProfile = async (req, res) =>{
                 });
             }
 
-            employee.bio = req.body.bio;
+            employee.bio = bio;
             await employee.save();
 
             return res.json({ success: true });
