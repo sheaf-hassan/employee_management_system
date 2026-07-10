@@ -99,7 +99,7 @@ const attendanceReminderCron = inngest.createFunction(
     async ({ step}) => {
         // Step-1: Get today's date range (BST)
         const today = await step.run("get-today-date", ()=>{
-            const startUTC = new Date(new Date().toLocaleDateString("en-CA", {timeZone: "Asia/Dhaka"}) + "T00:00:00+05:30");
+            const startUTC = new Date(new Date().toLocaleDateString("en-CA", {timeZone: "Asia/Dhaka"}) + "T00:00:00+06:00");
             const endUTC = new Date(startUTC.getTime() + 24 * 60 * 60 * 1000);
 
             return {startUTC: startUTC.toISOString(), endUTC: endUTC.toISOString()}
@@ -109,7 +109,7 @@ const attendanceReminderCron = inngest.createFunction(
         const activeEmployees = await step.run("get-active-employees", async ()=>{
             const employees = await Employee.find({
                 isDeleted: false,
-                employmentStatus: "ACTIVE",
+                employeeStatus: "ACTIVE",
             }).lean();
 
             return employees.map((e)=>({_id: e._id.toString(), firstName: e.firstName, lastName: e.lastName, email: e.email, department: e.department}))
