@@ -11,7 +11,7 @@ export const getEmployees = async (req, res)=>{
         const where = {};
         if(department) where.department = department; 
 
-        const employees = (await Employee.find(where)).toSorted({createdAt: -1}).populate("userId", "email role").lean();
+        const employees = await Employee.find(where).sort({createdAt: -1}).populate("userId", "email role").lean();
 
         const result = employees.map((emp)=>({
             ...emp,
@@ -40,7 +40,8 @@ export const createEmployee = async (req, res)=>{
         const user = await User.create({
             email,
             password: hashed,
-            role: role || "EMPLOYEE"
+            role: role || "EMPLOYEE",
+            bio: bio || "",
         })
 
         const employee = await Employee.create({
@@ -76,7 +77,7 @@ export const updateEmployee = async (req, res)=>{
     try {
         const {id} = req.params;
 
-        const {firstName, lastName, email, phone, position, department, basicSalary, allowances, deductions, password, role, bio, employmentStatus} = req.body;
+        const {firstName, lastName, email, phone, position, department, basicSalary, allowances, deductions, password, role, bio, employeeStatus} = req.body;
 
         const employee = await Employee.findById(id)
         if(!employee) return res.status(404).json({error: "Employee not found"})
@@ -91,12 +92,12 @@ export const updateEmployee = async (req, res)=>{
             basicSalary: Number(basicSalary) || 0,
             allowances: Number(allowances) || 0,
             deductions: Number(deductions) || 0,
-            employmentStatus: employmentStatus || "ACTIVE",
+            employeeStatus: employeeStatus || "ACTIVE",
             bio: bio || "",
         })
 
         // Update user record
-        const  userUpdate = {email};
+        const  userUpdate = {email, bio: bio || "",};
         if(role) userUpdate.role = role;
         if(password) userUpdate.password = await bcrypt.hash(password, 10);
         await User.findByIdAndUpdate(employee.userId, userUpdate)
@@ -122,7 +123,7 @@ export const deleteEmployee = async (req, res)=>{
         if(!employee) return res.status(404).json({error: "Employee not found"});
 
         employee.isDeleted = true;
-        employee.employmentStatus = "INACTIVE";
+        employee.employeeStatus = "INACTIVE";
         await employee.save()
 
         return res.json({success: true});

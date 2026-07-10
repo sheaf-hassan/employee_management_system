@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 // POST /api/auth/login
 export const login = async (req, res) => {
     try {
-        const {email, password, role_tye} = req.body;
+        const {email, password, role_type} = req.body;
 
         if(!email || !password){
             return res.status(400).json({error: "Email and password are required"});
@@ -21,7 +21,7 @@ export const login = async (req, res) => {
             return res.status(401).json({error: "Not authorized as admin"});
         }
 
-        if(role_tye === "employee" && user.role != "EMPLOYEE"){
+        if(role_type === "employee" && user.role != "EMPLOYEE"){
             return res.status(401).json({error: "Not authorized as employee"});
         }
 
