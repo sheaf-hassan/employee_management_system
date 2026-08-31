@@ -4,9 +4,9 @@ A full-stack employee management platform built with React, Tailwind CSS, JavaSc
 
 ## Project Preview
 
-<img src="images/project-preview-1.png" alt="Employee Management System" width="400"/>
-<img src="images/project-preview-2.png" alt="Employee Management System" width="400"/>
-<img src="images/project-preview-3.png" alt="Employee Management System" width="400"/>
+<img src="images/project-preview-1.png" alt="Employee Management System 1" width="400"/>
+<img src="images/project-preview-2.png" alt="Employee Management System 2" width="400"/>
+<img src="images/project-preview-3.png" alt="Employee Management System 3" width="400"/>
 
 ## Features
 
