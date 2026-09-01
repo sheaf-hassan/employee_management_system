@@ -59,7 +59,7 @@ const LoginForm = ({ role, title, subtitle }) => {
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Email address
+                Email address [eg: akib@gmail.com]
               </label>
               <input
                 type="email"
@@ -71,7 +71,7 @@ const LoginForm = ({ role, title, subtitle }) => {
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
-                Password
+                Password [eg: 1234@a]
               </label>
               <div className="relative">
                 <input
